@@ -1,6 +1,6 @@
 package com.CSO2.shoppingcartwishlistservice.controller;
 
-import com.CSO2.shoppingcartwishlistservice.dto.WishlistDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.response.WishlistDTO;
 import com.CSO2.shoppingcartwishlistservice.service.WishlistService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

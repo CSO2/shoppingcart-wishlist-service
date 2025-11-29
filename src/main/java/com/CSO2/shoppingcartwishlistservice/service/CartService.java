@@ -1,10 +1,10 @@
 package com.CSO2.shoppingcartwishlistservice.service;
 
 import com.CSO2.shoppingcartwishlistservice.client.CatalogClient;
-import com.CSO2.shoppingcartwishlistservice.dto.AddToCartRequest;
-import com.CSO2.shoppingcartwishlistservice.dto.CartDTO;
-import com.CSO2.shoppingcartwishlistservice.dto.CartItemDTO;
-import com.CSO2.shoppingcartwishlistservice.dto.WishlistDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.request.AddToCartRequest;
+import com.CSO2.shoppingcartwishlistservice.dto.response.CartDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.response.CartItemDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.response.WishlistDTO;
 import com.CSO2.shoppingcartwishlistservice.entity.Cart;
 import com.CSO2.shoppingcartwishlistservice.entity.CartItem;
 import com.CSO2.shoppingcartwishlistservice.repository.CartRepository;

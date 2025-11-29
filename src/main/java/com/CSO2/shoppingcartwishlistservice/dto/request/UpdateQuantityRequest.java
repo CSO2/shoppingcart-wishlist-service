@@ -1,4 +1,4 @@
-package com.CSO2.shoppingcartwishlistservice.dto;
+package com.CSO2.shoppingcartwishlistservice.dto.request;
 
 import lombok.Data;
 
