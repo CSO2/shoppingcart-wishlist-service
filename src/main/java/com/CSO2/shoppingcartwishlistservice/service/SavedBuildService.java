@@ -19,6 +19,10 @@ public class SavedBuildService {
         return savedBuildRepository.findByUserId(userId);
     }
 
+    public List<SavedBuild> getPublicBuilds() {
+        return savedBuildRepository.findByIsPublicTrue();
+    }
+
     public SavedBuild createBuild(SavedBuild build) {
         build.setCreatedAt(LocalDateTime.now());
         build.setUpdatedAt(LocalDateTime.now());
@@ -32,6 +36,10 @@ public class SavedBuildService {
             build.setName(buildDetails.getName());
             build.setComponents(buildDetails.getComponents());
             build.setTotalPrice(buildDetails.getTotalPrice());
+            build.setPublic(buildDetails.isPublic());
+            build.setCategory(buildDetails.getCategory());
+            build.setDescription(buildDetails.getDescription());
+            build.setBuilderName(buildDetails.getBuilderName());
             build.setUpdatedAt(LocalDateTime.now());
             return savedBuildRepository.save(build);
         }

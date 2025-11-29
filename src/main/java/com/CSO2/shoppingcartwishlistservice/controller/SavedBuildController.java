@@ -20,6 +20,11 @@ public class SavedBuildController {
         return savedBuildService.getBuildsByUserId(userId);
     }
 
+    @GetMapping("/public")
+    public List<SavedBuild> getPublicBuilds() {
+        return savedBuildService.getPublicBuilds();
+    }
+
     @PostMapping
     public ResponseEntity<SavedBuild> createBuild(@RequestBody SavedBuild build) {
         return ResponseEntity.ok(savedBuildService.createBuild(build));

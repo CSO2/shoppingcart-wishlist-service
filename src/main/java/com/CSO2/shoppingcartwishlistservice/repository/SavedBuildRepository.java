@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface SavedBuildRepository extends MongoRepository<SavedBuild, String> {
     List<SavedBuild> findByUserId(String userId);
+
+    List<SavedBuild> findByIsPublicTrue();
 }
