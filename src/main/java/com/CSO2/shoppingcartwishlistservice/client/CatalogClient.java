@@ -1,6 +1,6 @@
 package com.CSO2.shoppingcartwishlistservice.client;
 
-import com.CSO2.shoppingcartwishlistservice.dto.WishlistDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.response.WishlistDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

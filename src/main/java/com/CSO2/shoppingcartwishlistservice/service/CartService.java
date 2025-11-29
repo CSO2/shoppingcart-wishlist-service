@@ -51,7 +51,7 @@ public class CartService {
             CartItem newItem = new CartItem(
                     product.getId(),
                     product.getName(),
-                    new BigDecimal(product.getPrice()),
+                    product.getPrice(),
                     req.getQuantity(),
                     product.getImageUrl());
             cart.getItems().add(newItem);

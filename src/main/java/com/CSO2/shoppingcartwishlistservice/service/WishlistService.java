@@ -1,7 +1,7 @@
 package com.CSO2.shoppingcartwishlistservice.service;
 
 import com.CSO2.shoppingcartwishlistservice.client.CatalogClient;
-import com.CSO2.shoppingcartwishlistservice.dto.WishlistDTO;
+import com.CSO2.shoppingcartwishlistservice.dto.response.WishlistDTO;
 import com.CSO2.shoppingcartwishlistservice.entity.Wishlist;
 import com.CSO2.shoppingcartwishlistservice.repository.WishlistRepository;
 import lombok.RequiredArgsConstructor;
