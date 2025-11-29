@@ -26,6 +26,26 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/items/{id}")
+    public ResponseEntity<Void> updateItem(@RequestHeader("X-User-Subject") String userId,
+            @PathVariable String id, @RequestBody java.util.Map<String, Object> request) {
+        // Handle { quantity: number } format from frontend
+        Integer quantity = 1;
+        if (request.containsKey("quantity")) {
+            Object qty = request.get("quantity");
+            if (qty instanceof Number) {
+                quantity = ((Number) qty).intValue();
+            }
+        }
+        
+        AddToCartRequest req = new AddToCartRequest();
+        req.setProductId(id);
+        req.setQuantity(quantity);
+        
+        cartService.updateItem(userId, id, req);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("/items/{id}")
     public ResponseEntity<Void> removeItem(@RequestHeader("X-User-Subject") String userId, @PathVariable String id) {
         cartService.removeItem(userId, id);
@@ -34,6 +54,12 @@ public class CartController {
 
     @DeleteMapping
     public ResponseEntity<Void> clearCart(@RequestHeader("X-User-Subject") String userId) {
+        cartService.clearCart(userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/clear")
+    public ResponseEntity<Void> clearCartAlt(@RequestHeader("X-User-Subject") String userId) {
         cartService.clearCart(userId);
         return ResponseEntity.ok().build();
     }

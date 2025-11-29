@@ -61,6 +61,21 @@ public class CartService {
         cartRepository.save(cart);
     }
 
+    public void updateItem(String userId, String productId, AddToCartRequest req) {
+        Cart cart = cartRepository.findById(userId);
+        if (cart != null) {
+            Optional<CartItem> existingItem = cart.getItems().stream()
+                    .filter(item -> item.getProductId().equals(productId))
+                    .findFirst();
+            
+            if (existingItem.isPresent()) {
+                existingItem.get().setQuantity(req.getQuantity());
+                updateCartTotals(cart);
+                cartRepository.save(cart);
+            }
+        }
+    }
+
     public void removeItem(String userId, String productId) {
         Cart cart = cartRepository.findById(userId);
         if (cart != null) {
