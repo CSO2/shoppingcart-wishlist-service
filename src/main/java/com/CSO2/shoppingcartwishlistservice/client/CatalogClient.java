@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "product-catalogue-service", url = "http://localhost:8082") // Adjust URL as needed
+@FeignClient(name = "product-catalogue-service", url = "${catalog.service.url:http://localhost:8082}")
 public interface CatalogClient {
 
     @GetMapping("/api/products/{id}")
