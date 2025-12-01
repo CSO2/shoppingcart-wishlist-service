@@ -1,4 +1,4 @@
-package com.CSO2.shoppingcart_wishlist_service;
+package com.CSO2.shoppingcartwishlistservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
