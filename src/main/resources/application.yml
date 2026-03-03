@@ -1,0 +1,53 @@
+# --- Shopping Cart & Wishlist Service ---
+spring:
+  application:
+    name: shoppingcart-wishlist-service
+
+  # 1. Config Import: Load Vault first
+  config:
+    import: "optional:vault://"
+
+  # 2. Vault Configuration
+  cloud:
+    vault:
+      enabled: true
+      uri: ${VAULT_URI:http://localhost:8200}
+      token: ${VAULT_TOKEN:my-root-token}
+      kv:
+        enabled: true
+        backend: kv
+        default-context: cs02-app
+      authentication: TOKEN
+
+  # 3. Redis Configuration (Secrets from Vault)
+  data:
+    redis:
+      host: ${redis_host:localhost}
+      port: ${redis_port:6379}
+      # If you set a password in docker/vault, use ${redis_password}
+      # password: ${redis_password:}
+
+    # 4. MongoDB Configuration (Secrets from Vault)
+    mongodb:
+      # We will store the full connection string in Vault for simplicity
+      uri: ${mongodb_uri:mongodb://localhost:27017/CSO2_shoppingcart_wishlist_service}
+
+  # 5. Disable Relational DB Auto-config (Since we only use Mongo/Redis)
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+# --- Server Port ---
+server:
+  port: 8084
+
+# --- Feign Clients ---
+spring.cloud.openfeign.client.config.default:
+  connectTimeout: 5000
+  readTimeout: 5000
+
+# --- Service Discovery (Local URLs) ---
+catalog:
+  service:
+    url: ${CATALOG_SERVICE_URL:http://localhost:8082}
